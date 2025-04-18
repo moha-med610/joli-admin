@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import Cookies from 'js-cookie';
 import { useNavigate } from 'react-router-dom';
+import toast, { Toaster } from 'react-hot-toast';
 
 function Login() {
   const [email, setEmail] = useState('');
@@ -15,7 +16,7 @@ function Login() {
       Cookies.set('token', res.data.token);
       navigate('/admin');
     } catch (err) {
-      alert('فشل تسجيل الدخول' + err.message);
+      toast.error('فشل تسجيل الدخول');
     }
   };
 

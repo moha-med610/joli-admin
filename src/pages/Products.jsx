@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { format } from 'date-fns';
+import toast from 'react-hot-toast';
 
 function Products() {
   const [products, setProducts] = useState([]);
@@ -26,7 +27,7 @@ function Products() {
       await axios.delete(`https://e-commerce-joli-backend.onrender.com/api/products/${id}`, { withCredentials: true });
       setProducts(products.filter(prod => prod._id !== id));
     } catch (err) {
-      alert('خطأ في الحذف' + err.message);
+      toast.error('خطأ في الحذف' + err.message);
     }
   };
 
