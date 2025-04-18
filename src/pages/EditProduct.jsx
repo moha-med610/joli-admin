@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import toast, { Toaster } from 'react-hot-toast';
+
 
 function EditProduct() {
   const { id } = useParams();
@@ -17,17 +17,17 @@ function EditProduct() {
         setPrice(res.data.price);
         setDescription(res.data.description);
       })
-      .catch(() => toast.error('فشل تحميل البيانات'));
+      .catch(() => alert('فشل تحميل البيانات'));
   }, [id]);
 
   const handleUpdate = async (e) => {
     e.preventDefault();
     try {
       await axios.put(`https://e-commerce-joli-backend.onrender.com/api/products/${id}`, { title, price, description }, { withCredentials: true });
-      toast.success('تم التعديل بنجاح');
+      alert('تم التعديل بنجاح');
       navigate('/admin/products');
     } catch {
-      toast.error('فشل التعديل');
+      alert('فشل التعديل');
     }
   };
 

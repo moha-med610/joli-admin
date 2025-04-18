@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import toast, { Toaster } from 'react-hot-toast';
+
 
 function AddProduct() {
   const [title, setTitle] = useState("");
@@ -30,9 +30,9 @@ function AddProduct() {
           },
         }
       );
-      toast.success("تمت الإضافة بنجاح!");
+      alert("تمت الإضافة بنجاح!");
     } catch (err) {
-      toast.error("خطأ في الإضافة: " + err.message);
+      alert("خطأ في الإضافة: " + err.message);
     } finally {
       setIsLoading(false); // إيقاف حالة التحميل
     }
